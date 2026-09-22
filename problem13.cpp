@@ -18,16 +18,13 @@ public:
         hmap['M'] = 1000;
 
         for (int i = 0; i < s.length(); i++) {
-            if (i == (s.length() - 1)) {
-                sum = sum + hmap[static_cast<char>(s[i])];
-                continue;
-            }
-            if ( hmap[static_cast<char>(s[i])] < hmap[static_cast<char>(s[i+1])] ) {
-                sum = sum + (hmap[static_cast<char>(s[i+1])] - hmap[static_cast<char>(s[i])]);
-                i++;
+
+            if ( (i < (s.length() - 1)) && (hmap[static_cast<char>(s[i])] < hmap[static_cast<char>(s[i+1])]) ) {
+                sum = sum - hmap[static_cast<char>(s[i])];
             } else {
                 sum = sum + hmap[static_cast<char>(s[i])];
             }
+
         }
 
         return sum;
